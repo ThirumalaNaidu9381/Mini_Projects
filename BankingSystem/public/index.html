@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinSafe Banking</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <div class="container" id="app">
+        <!-- Auth Section -->
+        <div id="auth-section" class="glass-panel active">
+            <h1 class="brand-title">FinSafe</h1>
+            <div class="auth-tabs">
+                <button class="tab-btn active" id="tab-login">Login</button>
+                <button class="tab-btn" id="tab-register">Register</button>
+            </div>
+            
+            <form id="login-form" class="auth-form active">
+                <div class="input-group">
+                    <label>Username</label>
+                    <input type="text" id="login-username" required>
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <div class="error-msg" id="login-error"></div>
+                <button type="submit" class="primary-btn">Secure Login</button>
+            </form>
+
+            <form id="register-form" class="auth-form">
+                <div class="input-group">
+                    <label>Username</label>
+                    <input type="text" id="reg-username" required>
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="reg-password" required>
+                </div>
+                <div class="error-msg" id="reg-error"></div>
+                <button type="submit" class="primary-btn">Create Account</button>
+            </form>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div id="dashboard-section" class="glass-panel">
+            <header class="dashboard-header">
+                <h2>Welcome, <span id="user-display"></span></h2>
+                <button id="logout-btn" class="secondary-btn">Logout</button>
+            </header>
+
+            <div class="dashboard-content">
+                <div class="left-col">
+                    <div class="card my-accounts">
+                        <div class="card-header">
+                            <h3>My Accounts</h3>
+                            <button id="new-account-btn" class="text-btn">+ New Account</button>
+                        </div>
+                        <div id="accounts-list" class="accounts-list">
+                            <!-- Accounts injected here -->
+                        </div>
+                    </div>
+
+                    <div class="card new-account-form" id="new-account-panel">
+                        <h3>Open New Account</h3>
+                        <div class="input-group">
+                            <label>Account Type</label>
+                            <select id="new-acc-type">
+                                <option value="Savings">Savings Account</option>
+                                <option value="Current">Current Account</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Initial Deposit ($)</label>
+                            <input type="number" id="new-acc-balance" min="500" value="500">
+                        </div>
+                        <div class="btn-group">
+                            <button id="create-acc-btn" class="primary-btn sm">Create</button>
+                            <button id="cancel-acc-btn" class="secondary-btn sm">Cancel</button>
+                        </div>
+                    </div>
+
+                    <div class="card actions-panel" id="actions-panel">
+                        <h3>Transaction Action</h3>
+                        <div class="input-group">
+                            <label>Action Type</label>
+                            <select id="action-type">
+                                <option value="deposit">Deposit</option>
+                                <option value="withdraw">Withdraw</option>
+                                <option value="transfer">Transfer</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Amount ($)</label>
+                            <input type="number" id="action-amount" min="1">
+                        </div>
+                        <div class="input-group" id="target-account-group" style="display: none;">
+                            <label>Target Account Number</label>
+                            <input type="text" id="action-target">
+                        </div>
+                        <div class="error-msg" id="action-error"></div>
+                        <button id="execute-action-btn" class="primary-btn sm">Execute</button>
+                    </div>
+                </div>
+
+                <div class="right-col">
+                    <div class="card selected-account-info" id="selected-account-info">
+                        <h3>Select an account to view details</h3>
+                    </div>
+
+                    <div class="card transaction-history" id="transaction-history-panel">
+                        <h3>Transaction History</h3>
+                        <div class="table-container">
+                            <table id="transactions-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Type</th>
+                                        <th>Amount</th>
+                                        <th>Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="transactions-body">
+                                    <!-- Transactions injected here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
