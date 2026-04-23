@@ -37,6 +37,8 @@ To quickly test the application, you can use the built-in admin account:
 
 A video demonstrating the workflow (login, creating accounts, depositing, and transferring funds).
 
+<video controls src="Banking System Simulation.mp4" title="Title"></video>
+
 ## Objective Alignment
 
 This project satisfies the required objectives:
