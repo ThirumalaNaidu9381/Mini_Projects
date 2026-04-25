@@ -1,56 +1,66 @@
-# 📄 Resume Analyzer & Job Matcher
+# Resume Analyzer & Job Matcher
 
-Hey there! Thanks for checking out the **Resume Analyzer & Job Matcher**. 
+## Project Overview
 
-I built this tool because tailoring a resume for every single job application can be incredibly tedious. Often, we get rejected by automated Applicant Tracking Systems (ATS) simply because we missed a few critical keywords. I wanted to build something straightforward that takes the guesswork out of the process—using Natural Language Processing (NLP) to tell you exactly what your resume is missing compared to a specific job description.
+The Resume Analyzer & Job Matcher is a Python-based application designed to automate the process of resume screening and candidate evaluation. Utilizing Natural Language Processing (NLP), the application extracts critical technical and business skills from applicant resumes and compares them against specific job descriptions. By quantifying the alignment between candidate qualifications and role requirements, this tool provides actionable, data-driven insights to both recruiters and job seekers.
 
-Whether you're a fresh graduate tweaking your first resume or an experienced professional looking to pivot, I hope this makes your job hunt a little easier.
+The system is built to streamline the preliminary applicant tracking process, offering immediate scoring metrics, identifying skill gaps, and improving the efficiency of candidate assessment workflows.
 
-## ✨ What It Does
+## Key Features
 
-- **Smart Skill Extraction**: You can upload your resume (PDF or TXT) and paste in a job description. The application uses `spaCy` to intelligently extract technical and business skills.
-- **Match Scoring**: It gives you a clear, honest percentage score indicating how well your resume matches the job requirements.
-- **Actionable Insights**: Instead of a generic "good job," it explicitly lists the skills you successfully matched and the ones you are currently missing.
-- **Tailored Feedback**: Depending on your match score, it provides practical suggestions on how you might want to adjust your resume before hitting submit.
+- **Automated Skill Extraction**: Leverages advanced NLP tokenization to identify and extract relevant technical skills and industry-standard keywords from unstructured text.
+- **Match Scoring Algorithm**: Calculates an objective percentage score indicating the precise alignment between a candidate's resume and the target job description.
+- **Actionable Insights Reporting**: Generates a comprehensive breakdown categorized into matched skills and missing requirements, allowing for rapid candidate evaluation.
+- **Interactive User Interface**: Provides a streamlined, web-based dashboard for seamless document uploading and immediate results visualization.
+- **Multi-Format Document Parsing**: Natively supports text extraction from PDF documents and standard text files.
 
-## 🛠️ Tech Stack
+## Technology Stack
 
-I kept the stack modern but simple to ensure it's easy to run and extend:
-- **Python 3**: The backbone of the application.
-- **Streamlit**: For the clean, interactive, and fast web interface.
-- **spaCy**: The NLP engine doing the heavy lifting for keyword and entity extraction.
-- **PyPDF2**: For reliably parsing text out of uploaded PDF files.
+- **Python 3.x**: Core application logic and processing.
+- **Streamlit**: Web application framework utilized for the presentation layer.
+- **spaCy**: Industrial-strength NLP library employed for Named Entity Recognition (NER) and tokenization.
+- **PyPDF2**: Library used for robust text extraction from PDF files.
 
-## 🚀 Getting Started
+## Prerequisites
 
-I've set this up so you can run it locally with minimal friction. Make sure you have **Python 3.8+** installed.
+Ensure the following dependencies are installed in the host environment prior to deployment:
+- Python 3.8 or higher
+- `pip` package manager
 
-### The "One-Click" Way (Windows)
-If you're on Windows, I wrote a quick script to handle everything for you. Just double-click the `run.bat` file! 
-It will automatically:
-1. Install all required dependencies.
-2. Download the necessary `spaCy` NLP model (`en_core_web_sm`).
-3. Boot up the Streamlit server and open the app in your default browser.
+## Installation & Setup
 
-### Manual Installation
-If you're on macOS/Linux or prefer using the terminal, it's just three quick commands:
+1. **Clone or Download the Repository**
+   Ensure all project files are located within the target directory.
 
-1. **Install dependencies**:
+2. **Install Dependencies**
+   Open a terminal session and install the required Python packages:
    ```bash
    pip install -r requirements.txt
    ```
-2. **Download the NLP model**:
+
+3. **Download the NLP Language Model**
+   The application requires the English core web model for spaCy to perform accurate text analysis. Execute the following command:
    ```bash
    python -m spacy download en_core_web_sm
    ```
-3. **Start the application**:
-   ```bash
-   streamlit run app.py
-   ```
 
-## 🧪 Testing It Out
+## Usage
 
-If you just want to see how it works without uploading your own personal resume, no problem. I've included a `sample_resume.txt` and a `sample_job_desc.txt` in the repository. Feel free to use those to test the matching logic out of the box!
+### Standard Execution
+To launch the application server manually via the terminal, navigate to the project directory and execute:
 
----
-*If you find this helpful, feel free to fork it, tweak it, or just use it to land that dream job. Happy hunting!*
+```bash
+streamlit run app.py
+```
+The application will start a local web server and automatically open the interface in the default web browser.
+
+### Automated Execution (Windows Environments)
+For Windows environments, a batch execution script is provided. Double-clicking the `run.bat` file will automatically handle dependency installation, model downloading, and application execution in a single step.
+
+## Application Architecture Overview
+
+The system is structured into four primary logical components:
+- **Data Ingestion Layer**: Manages file uploads and parses raw text from standard formats (`.pdf`, `.txt`) using `PyPDF2`.
+- **NLP Processing Engine**: Utilizes `spaCy` to process the raw text, filtering out noise and isolating predefined technical keywords and phrases.
+- **Matching & Analytics Engine**: Executes set-theory operations (intersections and differences) on the extracted skill datasets to compute the overall match percentage.
+- **Presentation Layer**: Built with `Streamlit` to handle user interactions, render upload forms, and display the analytical results in an easily digestible visual format.
